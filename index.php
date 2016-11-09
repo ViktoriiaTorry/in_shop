@@ -1,11 +1,5 @@
 <?php
-require('scr/Facebook/autoload.php');
-$fb = new \Facebook\Facebook([
-  'app_id' => 'LyahovetskayaV',
-  'app_secret' => 'EAACEdEose0cBAGOsUNGULXbdLTbmSH4EMk7ypEwD0xbZArArABwsvZCvMbIRGS1FWkAsGjJ7SjxOcFNz8qu8WNQWjyyWUMOqsWOgwMWsbt6amDOGsPKuuZCeOv1ElKr4gZBpUxgGpGgkx0rEQ2MTBGROOh1evMZCUYhzhvDySTAZDZD',
-  'default_graph_version' => 'v2.8',
-  //'default_access_token' => '{access-token}', // optional
-]);
+
 
 // Use one of the helper classes to get a Facebook\Authentication\AccessToken entity.
 //   $helper = $fb->getRedirectLoginHelper();
