@@ -29,7 +29,7 @@ class OrdersController extends Controller
         $count = 1;
         if (!Cookie::get('goods_basket')) {
             Cookie::queue('goods_basket', json_encode(['goods_id' => $id, 'count' => $count]), 3600);
-            //return back();
+           
         }
 
      
@@ -49,13 +49,13 @@ class OrdersController extends Controller
         $goods_id = json_decode($getCookies);
         for ($i = 0; $i < count($goods_id); $i++) {
             $arr[] = Goods::find($goods_id[$i]->goods_id);
-          //  var_dump($arr).die();
+       
         }
          for ($i = 0; $i < count($goods_id); $i++){
                 $count[]= $goods_id[$i]->count;
                  }
        
-          // var_dump($count).die();
+        
         return view('Orders.basket', ['arr' => $arr,'count' => $count, 'cities'=>$cities]);
     }
     else{
@@ -88,13 +88,13 @@ class OrdersController extends Controller
         $cities = Cities::find($all['cities_id']);
         $all['cities'] = $cities;
         $prices = $all['price'];
-        // $count = $all['quantity'];
+      
         $goods_id = json_decode($getCookies);
  
 for ($i = 0; $i < count($goods_id); $i++){
                 $count[]= $goods_id[$i]->count;
          }
-        //   var_dump($count);
+       
         $name = $all['name'];
         $newPrices = [];
         foreach ($count as $key => $value) {
@@ -122,7 +122,7 @@ for ($i = 0; $i < count($goods_id); $i++){
 for ($i = 0; $i < count($goods_id); $i++){
                 $quantity[]= $goods_id[$i]->count;
          }
-       // Cookie::queue('goods_basket', NULL, -1);
+    
         $all = $request->all();
         $count = $all['quantity'];
         $id = $all['id'];
@@ -141,12 +141,12 @@ for ($i = 0; $i < count($goods_id); $i++){
     public function save(Request $request)
     {
               $getCookies = Cookie::get('goods_basket');
-       $goods_id = json_decode($getCookies);
+              $goods_id = json_decode($getCookies);
  
 for ($i = 0; $i < count($goods_id); $i++){
                 $quantity[]= $goods_id[$i]->count;
          }
-       // Cookie::queue('goods_basket', NULL, -1);
+      
         $all = $request->all();//Получаем все данные из формы в массив
         $count = $all['quantity'];
         $id = $all['id'];
